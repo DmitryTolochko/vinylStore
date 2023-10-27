@@ -1,0 +1,53 @@
+.vinyl {
+    width: 200px;
+    gap: 0;
+    text-decoration: none;
+    color: black;
+}
+
+.vinyl > a > img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+.vinyl > h3 {
+    font-size: 24px;
+}
+
+.vinyl > p {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.vinyl:hover .icon {
+    visibility: visible;
+    cursor: pointer;
+    transition: all .2s ease;
+    background: rgba(0, 0, 0, 0.356);
+}
+
+.vinyl:hover .icon-text {
+    visibility: visible;
+    cursor: pointer;
+}
+
+.icon {
+    width: 200px;
+    height: 200px;
+    background: transparent;
+    position: absolute;
+}
+
+.icon-text {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    gap: 10px;
+
+    visibility: hidden;
+}

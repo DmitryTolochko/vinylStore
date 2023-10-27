@@ -1,0 +1,17 @@
+.cond-card {
+    width: 260px;
+    display: grid;
+    gap: 10px;
+
+    margin-bottom: 100px;
+}
+
+.cond-card > h3 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.cond-card > p {
+    font-size: 20px;
+    margin: 0;
+}

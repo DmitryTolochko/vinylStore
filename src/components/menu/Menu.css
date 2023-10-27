@@ -1,0 +1,48 @@
+.menu-bar {
+    height: 100px;
+    width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-bar-wrapper {
+    border-bottom: 1px solid #D9D9D9;
+    visibility: hidden;
+    margin-top: -100px;
+    transition: margin-top .2s ease;
+}
+
+.menu-option {
+    color: transparent;
+    font-family: Open Sans;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.visible > .menu-bar > .menu-option:hover {
+    color:#D9D9D9;
+    transition: none;
+}
+
+.visible > .menu-bar > .menu-option:active {
+    color:#e6a6a3;
+    transition: none;
+}
+
+.visible > .menu-bar > .menu-option::after {
+    color:#727272;
+    transition: none;
+}
+
+.visible {
+    visibility: visible;
+    transition: margin-top .2s ;
+    margin-top: 0px;
+}
+
+.visible > .menu-bar > .menu-option {
+    color: #000;
+    transition: color .2s 100ms;
+}

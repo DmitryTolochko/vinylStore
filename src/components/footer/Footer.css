@@ -1,0 +1,73 @@
+.footer-wrapper {
+    width:100%;
+    background: url('../../images/footer_image.png') no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+
+    height:fit-content;
+}
+
+.footer {
+    width: 1160px;    
+    font-size: 24px;
+    display: grid;
+    height:fit-content;
+}
+
+.footer-h {
+    font-size: 40px;
+}
+
+.footer-text {
+    margin-left: 60px;
+}
+
+.footer-text > span {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.footer-text > span > h3 {
+    margin: 0 0;
+}
+
+.footer-text > span > p {
+    margin: 0 0;
+}
+
+.footer-text > h3 {
+    margin: 0 0;
+}
+
+.footer-map {
+    margin-bottom: 34px;
+}
+
+.ground-wrapper {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 60px;
+    margin-bottom: 40px;
+}
+
+.ground {
+    display: flex;
+    gap: 28px;
+}
+
+.shop-name-footer {
+    margin: 0 0;
+    color: #FFF;
+    font-family: Staatliches;
+    font-size: 48px;
+}
