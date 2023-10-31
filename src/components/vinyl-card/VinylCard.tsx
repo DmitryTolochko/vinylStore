@@ -9,7 +9,7 @@ const VinylCard : FC<{
     price: string | undefined,
 }> = ({ image, artist, album, price }) => {
     return (
-      <Link to='/item' className="cond-card vinyl">
+      <Link to='/item' target="_blank" className="cond-card vinyl">
         <div className="icon"></div>
         <span className="icon-text">
           <p>Подробнее</p>

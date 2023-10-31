@@ -21,7 +21,7 @@ const Menu : React.FC<MenuProps> = React.memo(({menuVisibility}) => {
                     <NavLink className='menu-option' to='/catalogue'>Каталог</NavLink>
                     <NavLink className='menu-option' to='/catalogue'>О магазине</NavLink>
                     <NavLink className='menu-option' to='/catalogue'>Оплата и доставка</NavLink>
-                    <NavLink className='menu-option' to='/catalogue'>Оформление заказа</NavLink>
+                    <NavLink className='menu-option' to='/orderpage'>Оформление заказа</NavLink>
                     
                 </div>
             </div>

@@ -11,6 +11,8 @@ import './components/filters/Filters.css';
 import './components/menu/Menu.css';
 import './pages/item_page/ItemPage.css';
 import './components/shopping_cart/ShoppingCart.css';
+import './pages/page_404/Page404.css';
+import './pages/order_page/OrderPage.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>

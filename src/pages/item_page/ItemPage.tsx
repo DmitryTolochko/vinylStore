@@ -35,7 +35,7 @@ export default function ItemPage () {
                         <p>Поп</p>
                     </span>
 
-                    <button className="cart-button">В корзину</button>
+                    <button className="cart-button-item">В корзину</button>
                 </div>
             </div>
 

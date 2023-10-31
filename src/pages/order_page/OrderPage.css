@@ -1,0 +1,53 @@
+.order-wrapper {
+    width: 1160px;
+    margin: 0 auto;
+}
+
+.order-step {
+    border-radius: 5px;
+    border: 1px solid #888;
+    height: fit-content;
+    margin-bottom: 37px;
+    padding: 50px;
+}
+
+.order-step > h3 {
+    margin-top: 20px;
+}
+
+.order-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-head > button {
+    width: 233px;
+    height: 55px;
+
+    border-radius: 5px;
+    border: 1px solid #888;
+    background-color: white;
+
+    color: #000;
+    text-align: center;
+    font-family: Open sans;
+    font-size: 20px;
+}
+
+.order-head > button:hover {
+    background-color: #b3b3b3;
+    transition: all .2s ease;
+}
+
+.order-step-head {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.order-step-head > h3 {
+    margin: 0;
+}
