@@ -4,9 +4,11 @@ import arrow from '../../images/right-arrow.svg';
 import MT from '../../images/mint.jpg';
 import VinylCard from '../../components/vinyl-card/VinylCard';
 import defaultImage from '../../images/default-image.jpg';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 export default function MainPage () {
+    const data = useLoaderData() as [];
+    
     return (
         <div className='main-wrapper'>
             <div className="main">
@@ -22,16 +24,27 @@ export default function MainPage () {
                 <div className='new-albums'>
                     <h2>Новинки</h2>
                     <div className='cond-boxes'>
-                        <VinylCard image={defaultImage} artist='Madonna' album='Ray of light' price='3500Р.'/>
-                        <VinylCard image={defaultImage} artist='Madonna' album='Ray of light' price='3500Р.'/>
-                        <VinylCard image={defaultImage} artist='Madonna' album='Ray of light' price='3500Р.'/>
-                        <VinylCard image={defaultImage} artist='Madonna' album='Ray of light' price='3500Р.'/>
-                        <VinylCard image={defaultImage} artist='Madonna' album='Ray of light' price='3500Р.'/>
-                        <VinylCard image={defaultImage} artist='Madonna' album='Ray of light' price='3500Р.'/>
-                        <VinylCard image={defaultImage} artist='Madonna' album='Ray of light' price='3500Р.'/>
-                        <VinylCard image={defaultImage} artist='Madonna' album='Ray of light' price='3500Р.'/>
-                        <VinylCard image={defaultImage} artist='Madonna' album='Ray of light' price='3500Р.'/>
-                        <VinylCard image={defaultImage} artist='Madonna' album='Ray of light' price='3500Р.'/>
+                        {data
+                        .sort((a, b) => {
+                            const dateA = new Date(a);
+                            const dateB = new Date(b);
+                        
+                            if (dateA.getTime() < dateB.getTime()) {
+                                return -1;
+                            } 
+                            else if (dateA.getTime() > dateB.getTime()) {
+                                return 1;
+                            } 
+                            else {
+                                return 0;
+                            }
+                        })
+                        .slice(0, data.length > 10 ? 10 : data.length)
+                        .map(el => (
+                            <div key ={el[0]}>
+                                <VinylCard id={el[0]} image={defaultImage} artist={el[1]} album={el[2]} price={el[10] + ' Р.'}/>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

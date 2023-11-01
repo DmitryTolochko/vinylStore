@@ -51,7 +51,7 @@
     margin-left: 15px;
 }
 
-.genres > a {
+.genre {
     border-radius: 5px;
     background: #D9D9D9;
     width: 200px;
@@ -64,6 +64,16 @@
 
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.genre:hover {
+    background: #e2e2e2;
+    transition: all .2s ease;
+}
+
+.genre:active {
+    background-color: #d1d6bc;
+    transition: all .1s ease;
 }
 
 .filters-button {
@@ -91,4 +101,8 @@
     cursor: pointer;
     background-color: #a0504c;
     transition: all .2s ease;
+}
+
+.checked-genre {
+    background-color: #CACFB6;
 }

@@ -1,6 +1,7 @@
 .catalogue-wrapper {
     width: 1160px;
     margin: 0 auto;
+    margin-bottom: 100px;
 }
 
 .catalogue {
@@ -11,6 +12,8 @@
 .right-side-catalogue {
     display: grid;
     width: 860px;
+    height:fit-content;
+    align-items: start;
 }
 
 .right-side-catalogue > span {
@@ -52,4 +55,22 @@
 
 a:hover {
     cursor: pointer;
+}
+
+.sort-on {
+    color: black;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.arrow-upside {
+    rotate: 180deg;
+}
+
+.exception-catalogue {
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
