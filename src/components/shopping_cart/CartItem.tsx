@@ -1,16 +1,25 @@
+import { FC } from 'react';
 import defaultImage from '../../images/default-image.jpg';
 import del from '../../images/delete-icon.svg';
 
-export default function CartItem () {
+const CartItem : FC<{
+    image: string | undefined,
+    artist: string | undefined,
+    album: string | undefined,
+    price: string | undefined,
+    id: string |undefined
+}> = ({ image, artist, album, price, id }) => {
     return (
-        <div className="cart-item">
-            <img alt='cover' src={defaultImage}></img>
+        <a href={`/item/${id}`} target="_blank" className="cart-item">
+            <img alt='cover' src={image ? image : defaultImage}></img>
             <span>
-                <p>Madonna</p>
-                <p>Ray of light</p>
-                <p>3500 Р.</p>
+                <p>{artist}</p>
+                <p>{album}</p>
+                <p>{price} Р.</p>
             </span>
            <button><img alt='delete' src={del}></img></button>
-        </div>
+        </a>
     )
 }
+
+export default CartItem;

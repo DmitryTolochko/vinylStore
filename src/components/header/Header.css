@@ -1,5 +1,6 @@
 body {
     margin: 0 auto;
+    margin-top: 100px;
     padding: 0 0;
     color: #000;
 
@@ -15,9 +16,15 @@ body {
 }
 
 .header-wrapper {
+    z-index: 80;
+    margin-top: -100px;
+    position: fixed;
+    width: 100%;
     display: flex;
     border-bottom: 1px solid #888;
     justify-content: center;
+
+    background: #FFF;
 }
 
 .header {
@@ -87,4 +94,35 @@ body {
 
 .menu-button:active {
     color:#6C302D;
+}
+
+.search-result-list {
+    justify-content: start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.search-result-wrapper {
+    z-index: 80;
+    position: fixed;
+    width: 100%;
+    background: linear-gradient(180deg, #F5F5F5 0%, #FFF 100%);
+    box-shadow: 0px 35px 35px 0px rgba(0, 0, 0, 0.10);
+}
+
+.search-result {
+    margin: 0 auto;
+    height: 453px;
+    width: 1160px;
+}
+
+.search-result > h2 {
+    margin: 0;
+    padding-top: 30px;
+    margin-bottom: 30px;
+}
+
+.up-search {
+    margin-top: -100px;
 }

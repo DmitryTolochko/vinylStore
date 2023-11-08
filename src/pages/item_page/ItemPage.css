@@ -130,3 +130,7 @@
 .order {
     margin: 100px auto;
 }
+
+.button-disabled {
+    background-color: #7e7e7e;
+}

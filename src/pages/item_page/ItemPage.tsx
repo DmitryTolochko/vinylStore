@@ -9,18 +9,35 @@ export default function ItemPage () {
     const params = useParams();
     const [isLoaded, setIsLoaded] = useState(false);
     const [data, setData] = useState([]);
+    const [isButtonActive, setIsButtonActive] = useState(true);
 
     useEffect(() => {
+        const cartItemsJSON = localStorage.getItem('cart_items');
+        const cartItems = cartItemsJSON ? JSON.parse(cartItemsJSON) : [];
+
         axios.get(api + 'items/' + params.id)
             .then(response => {
                 setIsLoaded(true);
                 setData(response.data);
+                setIsButtonActive(!cartItems.some(arr => 
+                    JSON.stringify(arr) === JSON.stringify(response.data)));
             })
             .catch(error => {
                 console.error(error);
                 throw error;
             });
     }, [])
+
+    const handleCartAdd = () => {
+        const cartItemsJSON = localStorage.getItem('cart_items');
+        const cartItems = cartItemsJSON ? JSON.parse(cartItemsJSON) : [];
+        if (!cartItems.some(arr => JSON.stringify(arr) === JSON.stringify(data)))
+            cartItems.push(data); //adding id of item
+        else
+            cartItems.pop(data); 
+        localStorage.setItem('cart_items', JSON.stringify(cartItems));
+        setIsButtonActive(isButtonActive => isButtonActive = !isButtonActive);
+    }
 
     if (isLoaded) {
         return (
@@ -57,7 +74,7 @@ export default function ItemPage () {
                         </span>
                         
     
-                        <button className="cart-button-item">В корзину</button>
+                        <button className={`cart-button-item ${isButtonActive ? '' : 'button-disabled'}`} onClick={handleCartAdd}>{isButtonActive ? 'В корзину' : 'Убрать из корзины'}</button>
                     </div>
                 </div>
     

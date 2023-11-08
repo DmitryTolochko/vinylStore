@@ -8,7 +8,6 @@ import ShoppingCart from "./components/shopping_cart/ShoppingCart";
 import Page404 from "./pages/page_404/Page404";
 import OrderPage from "./pages/order_page/OrderPage";
 import axios from "axios";
-import { useState } from "react";
 
 export const api = 'http://127.0.0.1:5000/'
 
@@ -26,17 +25,18 @@ function GetAllItems() {
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route element={<Header/>}>
+        <Route element={<Header/>} loader={GetAllItems}>
             <Route element={<MainPage/>} path='/' loader={GetAllItems}/>
             <Route element={<Catalogue/>} path='catalogue' loader={GetAllItems}/>
             <Route element={<ItemPage/>} path='/item/:id'/>
-            <Route element={<Page404/>} path='*'></Route>
+            <Route element={<Page404/>} path='*'/>
             <Route element={<OrderPage/>} path='orderpage'/>
         </Route>
     )
 );
 
 export default function App () {
+    
     return (
         <>
             <ShoppingCart/>

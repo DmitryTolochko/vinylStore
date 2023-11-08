@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 type MenuProps = {
     menuVisibility: boolean;
@@ -26,7 +26,7 @@ const Menu : React.FC<MenuProps> = React.memo(({menuVisibility}) => {
                 </div>
             </div>
             
-            <Outlet/>
+           
         </>
     )
 })

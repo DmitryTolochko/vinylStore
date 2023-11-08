@@ -15,7 +15,7 @@ import './pages/page_404/Page404.css';
 import './pages/order_page/OrderPage.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
+    // <React.StrictMode>
       <App />
-    </React.StrictMode>,
+    // </React.StrictMode>,
 )

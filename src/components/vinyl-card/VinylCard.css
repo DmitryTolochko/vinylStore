@@ -51,3 +51,31 @@
 
     visibility: hidden;
 }
+
+/* .small-card > img, .icon {
+    width: 160px;
+    height: 160px;
+}
+
+.small-card > .icon-text {
+    font-size: 16px;
+    width: 160px;
+    height: 160px;
+}
+
+.small-card > h3 {
+    font-size: 20px;
+} */
+
+.small-card {
+    width: 160px;
+}
+
+.small-card-img {
+    width: 160px;
+    height: 160px;
+}
+
+.small-card-text {
+    font-size: 20px;
+}
