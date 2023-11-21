@@ -1,29 +1,27 @@
 import cart1 from '../../images/cart-1.png';
 import cart2 from '../../images/cart-2.svg';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import CartItem from './CartItem';
+import { CartContext } from '../../App';
 
 
 export default function ShoppingCart () {
     const [cartVisibility, changeVisibility] = useState(false);
-    const [cartItems, setCartItems] = useState([]);
+    const {cartItems, setCartItems} = useContext<any>(CartContext);
 
     const handleCartClean = () => {
-        localStorage.setItem('cart_items', JSON.stringify([]));
         setCartItems([]);
     }
 
     const sumPrices = () => {
         let sum = 0;
         cartItems.map(e => sum += e[10]);
-
         return sum;
     }
 
     useEffect(() => {
-        const cartItemsJSON = localStorage.getItem('cart_items');
-        setCartItems(cartItemsJSON ? JSON.parse(cartItemsJSON) : []);
-    }, [cartVisibility, localStorage.getItem('cart_items')])
+        localStorage.setItem('cart_items', JSON.stringify(cartItems));
+    }, [cartVisibility, cartItems])
     
     if (cartVisibility) {
         return (

@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
-import BackButton from "../../components/back_button/BackButton";
 import defaultImage from '../../images/default-image.jpg';
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { Context, api } from "../../App";
+import { CartContext, api} from "../../App";
+import VinylCard from "../../components/vinyl-card/VinylCard";
 
 export default function ItemPage () {
     const params = useParams();
@@ -12,10 +12,14 @@ export default function ItemPage () {
     const [isButtonActive, setIsButtonActive] = useState(true);
     const [cover, setCover] = useState(defaultImage);
     const [imagesIds, setImagesIds] = useState([]) as any[];
+    const {cartItems, setCartItems} = useContext<any>(CartContext);
+    const [lastItems, setLastItems] = useState([]);
 
     useEffect(() => {
-        const cartItemsJSON = localStorage.getItem('cart_items');
-        const cartItems = cartItemsJSON ? JSON.parse(cartItemsJSON) : [];
+        localStorage.setItem('cart_items', JSON.stringify(cartItems));
+
+        const lastItemsJSON = localStorage.getItem('last_items');
+        let arr = lastItemsJSON ? JSON.parse(lastItemsJSON) : [];
 
         axios.get(api + 'items/' + params.id)
             .then(response => {
@@ -23,6 +27,14 @@ export default function ItemPage () {
                 setData(response.data);
                 setIsButtonActive(!cartItems.some((arr: any) => 
                     JSON.stringify(arr) === JSON.stringify(response.data)));
+
+                if (arr.length > 4)
+                    arr = arr.reverse().splice(0, 4).reverse();
+                if (!arr.some((arr: any) => JSON.stringify(arr) === JSON.stringify(response.data))) 
+                    arr.push(response.data);
+        
+                setLastItems(arr);
+                localStorage.setItem('last_items', JSON.stringify(arr));
             })
             .catch(error => {
                 console.error(error);
@@ -38,17 +50,14 @@ export default function ItemPage () {
                 setCover(api + `get_image/${newData[0]}`);
                 setImagesIds(ids);
             })
-    }, [])
+    }, [cartItems])
 
     const handleCartAdd = () => {
-        const cartItemsJSON = localStorage.getItem('cart_items');
-        const cartItems = cartItemsJSON ? JSON.parse(cartItemsJSON) : [];
-        if (!cartItems.some((arr: any) => JSON.stringify(arr) === JSON.stringify(data)))
-            cartItems.push(data); //adding id of item
-        else
-            cartItems.pop(data); 
-        localStorage.setItem('cart_items', JSON.stringify(cartItems));
-        setIsButtonActive(isButtonActive => isButtonActive = !isButtonActive);
+        if (!cartItems.some((arr: any) => JSON.stringify(arr) === JSON.stringify(data))) {
+            setCartItems((prevCartItems: any) => [...prevCartItems, data]);
+        } else {
+            setCartItems((prevCartItems: any[]) => prevCartItems.filter(item => JSON.stringify(item) !== JSON.stringify(data)));
+        }
     }
 
     const handleImageChange = (id: any) => {
@@ -57,8 +66,8 @@ export default function ItemPage () {
 
     if (isLoaded) {
         return (
+            <>
             <div className="item-wrapper">
-                {/* <BackButton/> */}
                 <div className="item">
                     <img alt='cover' src={cover}></img>
                     <div className="item-text">
@@ -102,6 +111,18 @@ export default function ItemPage () {
                     </div>))}
                 </div>
             </div>
+
+            <div className="new-albums-wrapper">
+                    <div className='new-albums'>
+                        <h2>Вы смотрели</h2>
+                        <div className='cond-boxes'>
+                            {lastItems.map(el => (
+                                <VinylCard id={el[0]} artist={el[1]} album={el[2]} price={el[10] + ' Р.'}/>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </>
         )
     }    
 }

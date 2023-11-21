@@ -51,6 +51,8 @@
     width: 200px;
     text-decoration: none;
     text-decoration-line: none;
+    display: flex;
+    align-items: center;
 }
 
 .cart-list {
