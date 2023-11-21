@@ -8,8 +8,10 @@ import ShoppingCart from "./components/shopping_cart/ShoppingCart";
 import Page404 from "./pages/page_404/Page404";
 import OrderPage from "./pages/order_page/OrderPage";
 import axios from "axios";
+import { createStore } from 'redux';
+import { createContext, useState } from "react";
 
-export const api = 'http://127.0.0.1:5000/'
+export const api = 'http://127.0.0.1:5000/';   
 
 function GetAllItems() {
     return axios.get(api + 'catalogue')
@@ -36,6 +38,17 @@ const router = createBrowserRouter(
 );
 
 export default function App () {
+    axios.interceptors.response.use(
+        config => {
+            return config;
+        },
+        error => {
+            if (error.response.status === 404) {
+                window.location.replace('/404');
+                return Promise.reject(error.response);
+            }
+        }
+    )
     
     return (
         <>

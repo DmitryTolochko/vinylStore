@@ -59,9 +59,27 @@
     margin-bottom: 500px;
 }
 
-.small-pictures > img {
+.item-page-image-wrapper > img {
     width: 60px;
     height: 60px;
+}
+
+.item-page-image-color {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+}
+
+.item-page-image-color:hover {
+    cursor: pointer;
+    background-color: #0000006c;
+    width: 60px;
+    height: 60px;
+    transition: all .2s ease;
+}
+
+.item-page-image-color:active {
+    background-color: #6c302d5b;
 }
 
 .back-button {

@@ -7,24 +7,29 @@ export default function Filters (props) {
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(10000000);
     const [genres, setGenres] = useState([] as string[]);
+    const allGenres = {
+        'rock': 'Классический Рок', 
+        'jazz': 'Джаз', 
+        'electronic': 'Электроника', 
+        'funk': 'Фанк', 
+        'pop': 'Поп/Диско'
+    };
 
     const useFilters = () => {
         props.filterFunc(minPrice, maxPrice, genres);
     }
 
+
     const handleGenreCheck = (id: string) => {
-        let el = document.getElementById(id);
-        let newGenres = genres;
-        if (genres.filter(e => e == id).length == 0) {
-            newGenres.push(id);
-            el.className = 'genre checked-genre';
-        }
-        else {
-            newGenres = newGenres.filter(e => e != id);
-            el.className = 'genre';
-        }
-        setGenres(newGenres);
+        setGenres(prevGenres => {
+            if (prevGenres.includes(id)) {
+                return prevGenres.filter(genre => genre !== id);
+            } else {
+                return [...prevGenres, id];
+            }
+        });
     }
+     
 
     return (
         <div className="filters">
@@ -41,26 +46,16 @@ export default function Filters (props) {
 
             <h4>Жанр</h4>
             <ul className="genres">
-                <a onClick={() => handleGenreCheck('rock')} id='rock' className='genre'>
-                    Классический Рок
-                    <img alt='check' src={uncheck}/>
-                </a>
-                <a onClick={() => handleGenreCheck('jazz')} id='jazz' className='genre'>
-                    Джаз
-                    <img alt='check' src={uncheck}/>
-                </a>
-                <a onClick={() => handleGenreCheck('electronic')} id='electronic' className='genre'>
-                    Электроника
-                    <img alt='check' src={uncheck}/>
-                </a>
-                <a onClick={() => handleGenreCheck('funk')} id='funk' className='genre'>
-                    Фанк
-                    <img alt='check' src={uncheck}/>
-                </a>
-                <a onClick={() => handleGenreCheck('pop')} id='pop' className='genre'>
-                    Поп/Диско
-                    <img alt='check' src={uncheck}/>
-                </a>
+                {Object.keys(allGenres).map(el => 
+                    <li key={el}>
+                        <a className={(genres.includes(el) ? 'genre checked-genre' : 'genre')} 
+                        onClick={() => handleGenreCheck(el)} id={el}>
+                            {allGenres[el]}
+                            <img alt='check' src={genres.includes(el) ? check : uncheck}/>
+                        </a>
+                    </li>
+                )}
+
             </ul>
 
             <button className="filters-button" onClick={useFilters}>Показать результаты<img alt='arrow' src={arrow}/></button>

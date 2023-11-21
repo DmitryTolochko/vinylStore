@@ -3,7 +3,6 @@ import cover from '../../images/main-cover.jpg';
 import arrow from '../../images/right-arrow.svg';
 import MT from '../../images/mint.jpg';
 import VinylCard from '../../components/vinyl-card/VinylCard';
-import defaultImage from '../../images/default-image.jpg';
 import { Link, useLoaderData } from 'react-router-dom';
 
 export default function MainPage () {
@@ -42,7 +41,7 @@ export default function MainPage () {
                         .slice(0, data.length > 10 ? 10 : data.length)
                         .map(el => (
                             <div key ={el[0]}>
-                                <VinylCard id={el[0]} image={defaultImage} artist={el[1]} album={el[2]} price={el[10] + ' Р.'}/>
+                                <VinylCard id={el[0]} artist={el[1]} album={el[2]} price={el[10] + ' Р.'}/>
                             </div>
                         ))}
                     </div>

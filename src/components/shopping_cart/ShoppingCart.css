@@ -40,8 +40,17 @@
     height: 74px;
     background: #A6AEB5;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
+
+    text-decoration: none;
+    text-decoration-line: none;
+}
+
+.cart-item-p {
+    width: 200px;
+    text-decoration: none;
+    text-decoration-line: none;
 }
 
 .cart-list {
@@ -57,9 +66,10 @@
 }
 
 .cart-item > span {
+    padding-left: 70px;
     display: flex;
-    justify-content: space-between;
-    gap: 150px;
+    justify-content: start;
+    gap: 63px;
     color: white;
 }
 
@@ -109,6 +119,7 @@ button:hover {
 }
 
 .cart-item > button {
+    margin-left: -60px;
     background-color: transparent;
     border: transparent;
     display: flex;

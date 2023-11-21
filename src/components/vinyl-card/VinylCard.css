@@ -11,6 +11,11 @@
     margin-bottom: 10px;
 }
 
+.vinyl-card-img {
+    width: 200px;
+    height: 200px;
+}
+
 .vinyl > h3 {
     font-size: 24px;
 }

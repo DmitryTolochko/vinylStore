@@ -6,7 +6,6 @@ import CartItem from './CartItem';
 
 export default function ShoppingCart () {
     const [cartVisibility, changeVisibility] = useState(false);
-    const cartItemsJSON = localStorage.getItem('cart_items');
     const [cartItems, setCartItems] = useState([]);
 
     const handleCartClean = () => {
@@ -14,9 +13,17 @@ export default function ShoppingCart () {
         setCartItems([]);
     }
 
+    const sumPrices = () => {
+        let sum = 0;
+        cartItems.map(e => sum += e[10]);
+
+        return sum;
+    }
+
     useEffect(() => {
+        const cartItemsJSON = localStorage.getItem('cart_items');
         setCartItems(cartItemsJSON ? JSON.parse(cartItemsJSON) : []);
-    }, [cartVisibility])
+    }, [cartVisibility, localStorage.getItem('cart_items')])
     
     if (cartVisibility) {
         return (
@@ -38,7 +45,7 @@ export default function ShoppingCart () {
                         </div>
                     ))}
                 </div>
-                <h3>Итого: 10500 Р.</h3>
+                <h3>Итого: {sumPrices()} Р.</h3>
                 <div className='cart-buttons'>
                     <a href='/orderpage' className='cart-button green-button' >К оплате</a>
                     <button onClick={() => changeVisibility(c => !c)}>Продолжить покупки</button>
