@@ -111,20 +111,6 @@
     margin: 0;
 }
 
-.order-step-input {
-    padding-left: 20px;
-    width: 360px;
-    height: 50px;
-    border: 5px none;
-    background: #F5F5F5;
-
-    color: #888;
-    font-family: Open sans;
-    font-size: 20px;
-
-    margin-bottom: 40px;
-}
-
 .info-about-columns {
     display: flex;
     gap: 80px;

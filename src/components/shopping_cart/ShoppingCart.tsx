@@ -19,8 +19,11 @@ export default function ShoppingCart () {
         return sum;
     }
 
+    const [sum, setSum] = useState(sumPrices());
+
     useEffect(() => {
         localStorage.setItem('cart_items', JSON.stringify(cartItems));
+        setSum(sumPrices());
     }, [cartVisibility, cartItems])
     
     if (cartVisibility) {
@@ -43,7 +46,7 @@ export default function ShoppingCart () {
                         </div>
                     ))}
                 </div>
-                <h3>Итого: {sumPrices()} Р.</h3>
+                <h3>Итого: {sum} Р.</h3>
                 <div className='cart-buttons'>
                     <a href='/orderpage' className='cart-button green-button' >К оплате</a>
                     <button onClick={() => changeVisibility(c => !c)}>Продолжить покупки</button>

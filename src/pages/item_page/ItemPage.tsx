@@ -28,10 +28,12 @@ export default function ItemPage () {
                 setIsButtonActive(!cartItems.some((arr: any) => 
                     JSON.stringify(arr) === JSON.stringify(response.data)));
 
-                if (arr.length > 4)
+                if (!arr.some((arr: any) => JSON.stringify(arr) === JSON.stringify(response.data))) {
+                    if (arr.length > 4)
                     arr = arr.reverse().splice(0, 4).reverse();
-                if (!arr.some((arr: any) => JSON.stringify(arr) === JSON.stringify(response.data))) 
                     arr.push(response.data);
+                } 
+                    
         
                 setLastItems(arr);
                 localStorage.setItem('last_items', JSON.stringify(arr));

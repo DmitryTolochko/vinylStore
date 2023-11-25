@@ -9,6 +9,8 @@ import Page404 from "./pages/page_404/Page404";
 import OrderPage from "./pages/order_page/OrderPage";
 import axios from "axios";
 import { createContext, useState } from "react";
+import ConversionPage from "./pages/conversion_page/ConversionPage";
+import ErrorConversion from "./pages/error_conversion/ErrorConversion";
 
 export const api = 'http://127.0.0.1:5000/'; 
 
@@ -17,6 +19,7 @@ export const CartContext = createContext({});
 function GetAllItems() {
     return axios.get(api + 'catalogue')
         .then(response => {
+            
             return response.data;
         })
         .catch(error => {
@@ -34,6 +37,8 @@ const router = createBrowserRouter(
             <Route element={<ItemPage/>} path='/item/:id'/>
             <Route element={<Page404/>} path='*'/>
             <Route element={<OrderPage/>} path='orderpage'/>
+            <Route element={<ConversionPage/>} path='conversion/:id'/>
+            <Route element={<ErrorConversion/>} path='/conversion/error'/>
         </Route>
     )
 );

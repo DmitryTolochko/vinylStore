@@ -152,3 +152,8 @@ button:hover {
     background: #777f86;
     transition: all .2s ease;
 }
+
+.cart-item:hover {
+    background-color:#ad5e5a;
+    transition: all .2s ease;
+}
